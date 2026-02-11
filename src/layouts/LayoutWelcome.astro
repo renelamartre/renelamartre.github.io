@@ -1,22 +1,18 @@
 ---
 import '../styles/theme.css';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import type { Locale } from '../i18n';
-
 interface Props {
   title: string;
   description?: string;
-  locale: Locale;
 }
-const { title, description = '', locale } = Astro.props;
+const { title, description = '' } = Astro.props;
+const base = import.meta.env.BASE_URL;
 ---
 <!doctype html>
-<html lang={locale}>
+<html lang="x-default">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" type="image/jpeg" href={`${import.meta.env.BASE_URL}260879530.jpeg`} />
-    <link rel="icon" href={`${import.meta.env.BASE_URL}favicon.ico`} />
+    <link rel="icon" type="image/jpeg" href={`${base}260879530.jpeg`} />
+    <link rel="icon" href={`${base}favicon.ico`} />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
@@ -25,13 +21,9 @@ const { title, description = '', locale } = Astro.props;
             async src="//gc.zgo.at/count.js"></script>
   </head>
   <body>
-    <div class="layout">
-      <Header locale={locale} />
-      <main class="main">
-        <slot />
-      </main>
-      <Footer locale={locale} />
-    </div>
+    <main class="welcome-main">
+      <slot />
+    </main>
   </body>
 </html>
 
@@ -49,16 +41,14 @@ const { title, description = '', locale } = Astro.props;
 </style>
 
 <style>
-  .layout {
+  .welcome-main {
     min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-  }
-  .main {
-    flex: 1;
     max-width: 720px;
     margin: 0 auto;
     padding: 2rem 1.5rem;
-    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
 </style>

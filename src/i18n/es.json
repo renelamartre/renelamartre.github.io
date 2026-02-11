@@ -1,29 +1,14 @@
 {
-  "nav": {
-    "home": "Inicio",
-    "books": "Libros",
-    "blog": "Blog"
+  "welcome": {
+    "title": "René La Martre",
+    "subtitle": "Sitio de autor y autoedición",
+    "description": "Descubre mis libros y el blog. Libros, noticias y textos.",
+    "chooseLanguage": "Elige tu idioma",
+    "enter": "Entrar al sitio",
+    "languageName": "Español"
   },
-  "home": {
-    "siteTitle": "Edición René La Martre",
-    "siteDescription": "Sitio de autor y autoedición.",
-    "tagline": "Descubre mis libros y el blog.",
-    "featured": "Destacado",
-    "discoverBook": "Descubrir el libro",
-    "viewAllBooks": "Ver todos los libros",
-    "viewBlog": "Ver el blog"
-  },
-  "blog": {
-    "title": "Blog",
-    "description": "Artículos y noticias.",
-    "intro": "Artículos y entradas."
-  },
-  "books": {
-    "title": "Libros",
-    "description": "Descubre mis obras.",
-    "intro": "Lista de mis publicaciones.",
-    "learnMore": "Saber más",
-    "tagline": "Un thriller distópico coral",
-    "availability": "Próximamente (Amazon KDP, librerías)."
-  }
+  "nav": {"home":"Inicio","books":"Libros","blog":"Blog"},
+  "home": {"siteTitle":"Edición René La Martre","siteDescription":"Sitio de autor y autoedición.","tagline":"Descubre mis libros y el blog.","featured":"Destacado","discoverBook":"Descubrir el libro","viewAllBooks":"Ver todos los libros","viewBlog":"Ver el blog"},
+  "blog": {"title":"Blog","description":"Artículos y noticias.","intro":"Artículos y entradas."},
+  "books": {"title":"Libros","description":"Descubre mis obras.","intro":"Lista de mis publicaciones.","learnMore":"Saber más","tagline":"Un thriller distópico coral","availability":"Próximamente (Amazon KDP, librerías)."}
 }

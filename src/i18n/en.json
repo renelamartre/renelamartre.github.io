@@ -1,29 +1,14 @@
 {
-  "nav": {
-    "home": "Home",
-    "books": "Books",
-    "blog": "Blog"
+  "welcome": {
+    "title": "René La Martre",
+    "subtitle": "Author & self-publishing site",
+    "description": "Discover my books and the blog. Books, news and writing.",
+    "chooseLanguage": "Choose your language",
+    "enter": "Enter the site",
+    "languageName": "English"
   },
-  "home": {
-    "siteTitle": "René La Martre Publishing",
-    "siteDescription": "Author and self-publishing site.",
-    "tagline": "Discover my books and the blog.",
-    "featured": "Featured",
-    "discoverBook": "Discover the book",
-    "viewAllBooks": "View all books",
-    "viewBlog": "View the blog"
-  },
-  "blog": {
-    "title": "Blog",
-    "description": "Articles and news.",
-    "intro": "Articles and posts."
-  },
-  "books": {
-    "title": "Books",
-    "description": "Discover my works.",
-    "intro": "List of my publications.",
-    "learnMore": "Learn more",
-    "tagline": "A choral dystopian thriller",
-    "availability": "Coming soon (Amazon KDP, bookstores)."
-  }
+  "nav": {"home":"Home","books":"Books","blog":"Blog"},
+  "home": {"siteTitle":"René La Martre Publishing","siteDescription":"Author and self-publishing site.","tagline":"Discover my books and the blog.","featured":"Featured","discoverBook":"Discover the book","viewAllBooks":"View all books","viewBlog":"View the blog"},
+  "blog": {"title":"Blog","description":"Articles and news.","intro":"Articles and posts."},
+  "books": {"title":"Books","description":"Discover my works.","intro":"List of my publications.","learnMore":"Learn more","tagline":"A choral dystopian thriller","availability":"Coming soon (Amazon KDP, bookstores)."}
 }

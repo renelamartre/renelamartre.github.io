@@ -36,7 +36,7 @@ const dateLocale = locale === 'fr' ? 'fr-FR' : locale === 'en' ? 'en-US' : 'es-E
 <style>
   .intro {
     margin-bottom: 1.5rem;
-    color: #555;
+    color: var(--color-text-muted);
   }
   .post-list {
     list-style: none;
@@ -44,7 +44,7 @@ const dateLocale = locale === 'fr' ? 'fr-FR' : locale === 'en' ? 'en-US' : 'es-E
     margin: 0;
   }
   .post-item {
-    border-bottom: 1px solid #e5e5e5;
+    border-bottom: 1px solid var(--color-border);
     padding: 1rem 0;
   }
   .post-item:last-child {
@@ -64,12 +64,12 @@ const dateLocale = locale === 'fr' ? 'fr-FR' : locale === 'en' ? 'en-US' : 'es-E
   }
   .post-date {
     font-size: 0.875rem;
-    color: #666;
+    color: var(--color-text-muted);
   }
   .post-description {
     margin: 0.5rem 0 0;
     font-size: 0.9375rem;
-    color: #555;
+    color: var(--color-text-muted);
     line-height: 1.5;
   }
 </style>

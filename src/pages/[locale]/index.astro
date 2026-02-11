@@ -70,7 +70,7 @@ const blogUrl = getRelativeLocaleUrl(locale, 'blog');
   .hero-tagline {
     margin: 1rem 0 0;
     font-size: 1.125rem;
-    color: #555;
+    color: var(--color-text-muted);
   }
   .featured {
     margin: 2rem 0;
@@ -78,16 +78,16 @@ const blogUrl = getRelativeLocaleUrl(locale, 'blog');
   .featured h2 {
     font-size: 1.125rem;
     margin-bottom: 1rem;
-    color: #555;
+    color: var(--color-text-muted);
   }
   .featured-book {
     display: flex;
     gap: 1.5rem;
     align-items: flex-start;
     padding: 1.5rem;
-    border: 1px solid #e5e5e5;
+    border: 1px solid var(--color-border);
     border-radius: 8px;
-    background: #fafafa;
+    background: var(--color-bg-muted);
   }
   .featured-book a {
     color: inherit;
@@ -108,19 +108,19 @@ const blogUrl = getRelativeLocaleUrl(locale, 'blog');
   }
   .featured-body p {
     margin: 0 0 1rem;
-    color: #444;
+    color: var(--color-text-muted);
     font-size: 0.9375rem;
   }
   .button {
     display: inline-block;
     padding: 0.5rem 1rem;
-    background: #1a1a1a;
-    color: #fff !important;
+    background: var(--color-accent);
+    color: var(--color-accent-text) !important;
     border-radius: 6px;
     font-weight: 500;
   }
   .button:hover {
-    background: #333;
+    background: var(--color-accent-hover);
     text-decoration: none !important;
   }
   .home-links {
@@ -129,7 +129,7 @@ const blogUrl = getRelativeLocaleUrl(locale, 'blog');
     margin-top: 2rem;
   }
   .home-links a {
-    color: #1a1a1a;
+    color: var(--color-text);
     font-weight: 500;
   }
   @media (max-width: 480px) {

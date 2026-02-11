@@ -1,29 +1,14 @@
 {
-  "nav": {
-    "home": "Accueil",
-    "books": "Livres",
-    "blog": "Blog"
+  "welcome": {
+    "title": "René La Martre",
+    "subtitle": "Site d'auteur et d'auto-édition",
+    "description": "Découvrez mes livres et le blog. Livres, actualités et textes.",
+    "chooseLanguage": "Choisissez votre langue",
+    "enter": "Entrer sur le site",
+    "languageName": "Français"
   },
-  "home": {
-    "siteTitle": "Edition René La Martre",
-    "siteDescription": "Site d'auteur et d'auto-édition.",
-    "tagline": "Découvrez mes livres et le blog.",
-    "featured": "À la une",
-    "discoverBook": "Découvrir le livre",
-    "viewAllBooks": "Voir tous les livres",
-    "viewBlog": "Voir le blog"
-  },
-  "blog": {
-    "title": "Blog",
-    "description": "Articles et actualités.",
-    "intro": "Articles et billets."
-  },
-  "books": {
-    "title": "Livres",
-    "description": "Découvrez mes ouvrages.",
-    "intro": "Liste de mes publications.",
-    "learnMore": "En savoir plus",
-    "tagline": "Un thriller dystopique choral",
-    "availability": "Disponible prochainement (Amazon KDP, librairies)."
-  }
+  "nav": {"home":"Accueil","books":"Livres","blog":"Blog"},
+  "home": {"siteTitle":"Edition René La Martre","siteDescription":"Site d'auteur et d'auto-édition.","tagline":"Découvrez mes livres et le blog.","featured":"À la une","discoverBook":"Découvrir le livre","viewAllBooks":"Voir tous les livres","viewBlog":"Voir le blog"},
+  "blog": {"title":"Blog","description":"Articles et actualités.","intro":"Articles et billets."},
+  "books": {"title":"Livres","description":"Découvrez mes ouvrages.","intro":"Liste de mes publications.","learnMore":"En savoir plus","tagline":"Un thriller dystopique choral","availability":"Disponible prochainement (Amazon KDP, librairies)."}
 }
