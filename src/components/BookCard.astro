@@ -1,0 +1,79 @@
+---
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import type { Book } from '../data/books';
+import { t, type Locale } from '../i18n';
+const base = import.meta.env.BASE_URL;
+
+interface Props {
+  book: Book;
+  locale: Locale;
+}
+const { book, locale } = Astro.props;
+const imageUrl = book.image.startsWith('/') ? `${base}${book.image.slice(1)}` : `${base}${book.image}`;
+const bookUrl = getRelativeLocaleUrl(locale, `livres/${book.slug}`);
+---
+<article class="card">
+  <a href={bookUrl} class="card-link">
+    <img src={imageUrl} alt={book.title} class="card-image" width="200" height="300" />
+    <div class="card-body">
+      <h2 class="card-title">{book.title}</h2>
+      <p class="card-description">{book.shortDescription}</p>
+      <span class="card-cta">{t(locale, 'books.learnMore')}</span>
+    </div>
+  </a>
+</article>
+
+<style>
+  .card {
+    border: 1px solid var(--color-border, #e5e5e5);
+    border-radius: 8px;
+    overflow: hidden;
+    background: #fff;
+  }
+  .card-link {
+    display: flex;
+    gap: 1.5rem;
+    padding: 0;
+    text-decoration: none;
+    color: inherit;
+  }
+  .card-link:hover .card-cta {
+    text-decoration: underline;
+  }
+  .card-image {
+    width: 160px;
+    height: auto;
+    min-height: 240px;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+  .card-body {
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .card-title {
+    margin: 0 0 0.5rem;
+    font-size: 1.25rem;
+  }
+  .card-description {
+    margin: 0 0 0.75rem;
+    font-size: 0.9375rem;
+    color: #444;
+    line-height: 1.5;
+  }
+  .card-cta {
+    font-weight: 500;
+    color: #1a1a1a;
+  }
+  @media (max-width: 480px) {
+    .card-link {
+      flex-direction: column;
+    }
+    .card-image {
+      width: 100%;
+      min-height: 320px;
+    }
+  }
+</style>

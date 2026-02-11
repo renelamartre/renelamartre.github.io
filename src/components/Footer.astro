@@ -1,0 +1,49 @@
+---
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import { t, type Locale } from '../i18n';
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const currentYear = new Date().getFullYear();
+const homeUrl = getRelativeLocaleUrl(locale, '');
+const booksUrl = getRelativeLocaleUrl(locale, 'livres');
+const blogUrl = getRelativeLocaleUrl(locale, 'blog');
+---
+<footer class="footer">
+  <nav class="footer-nav">
+    <a href={homeUrl}>{t(locale, 'nav.home')}</a>
+    <a href={booksUrl}>{t(locale, 'nav.books')}</a>
+    <a href={blogUrl}>{t(locale, 'nav.blog')}</a>
+  </nav>
+  <p class="copyright">&copy; {currentYear}</p>
+</footer>
+
+<style>
+  .footer {
+    margin-top: auto;
+    padding: 1.5rem;
+    border-top: 1px solid var(--color-border, #e5e5e5);
+    background: var(--color-bg-muted, #f5f5f5);
+    text-align: center;
+  }
+  .footer-nav {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 0.75rem;
+  }
+  .footer-nav a {
+    color: var(--color-text, #1a1a1a);
+    text-decoration: none;
+  }
+  .footer-nav a:hover {
+    text-decoration: underline;
+  }
+  .copyright {
+    margin: 0;
+    font-size: 0.875rem;
+    color: var(--color-text-muted, #666);
+  }
+</style>

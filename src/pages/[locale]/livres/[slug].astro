@@ -1,0 +1,123 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import { getBooks } from '../../../data/books';
+import { t, LOCALES, type Locale } from '../../../i18n';
+import { marked } from 'marked';
+
+export async function getStaticPaths() {
+  const paths: { params: { locale: string; slug: string } }[] = [];
+  for (const locale of LOCALES) {
+    const books = getBooks(locale);
+    for (const book of books) {
+      paths.push({ params: { locale, slug: book.slug } });
+    }
+  }
+  return paths;
+}
+
+const { locale, slug } = Astro.params as { locale: Locale; slug: string };
+const base = import.meta.env.BASE_URL;
+const books = getBooks(locale);
+const book = books.find((b) => b.slug === slug);
+if (!book) {
+  return Astro.redirect(getRelativeLocaleUrl(locale, 'livres'));
+}
+const imageUrl = book.image.startsWith('/') ? `${base}${book.image.slice(1)}` : `${base}${book.image}`;
+marked.setOptions({ gfm: true });
+const descriptionHtml = await marked.parse(book.description);
+---
+<Layout title={book.title} description={book.shortDescription} locale={locale}>
+  <article class="book-page">
+    <div class="book-header">
+      <img src={imageUrl} alt={book.title} class="book-cover" width="280" height="420" />
+      <div class="book-meta">
+        <h1>{book.title}</h1>
+        <p class="tagline">{t(locale, 'books.tagline')}</p>
+        <div class="availability">
+          <p>{t(locale, 'books.availability')}</p>
+        </div>
+      </div>
+    </div>
+    <div class="book-description" set:html={descriptionHtml} />
+  </article>
+</Layout>
+
+<style>
+  .book-page {
+    margin: 0;
+  }
+  .book-header {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+  .book-cover {
+    width: 200px;
+    height: auto;
+    object-fit: cover;
+    border-radius: 4px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  .book-meta h1 {
+    margin: 0 0 0.5rem;
+    font-size: 1.75rem;
+  }
+  .tagline {
+    margin: 0 0 1rem;
+    color: #555;
+    font-size: 1rem;
+  }
+  .availability {
+    padding: 1rem;
+    background: #f5f5f5;
+    border-radius: 6px;
+    font-size: 0.9375rem;
+    color: #444;
+  }
+  .availability p {
+    margin: 0;
+  }
+  .book-description {
+    line-height: 1.7;
+  }
+  .book-description p {
+    margin: 0 0 1rem;
+  }
+  .book-description p:last-child {
+    margin-bottom: 0;
+  }
+  .book-description strong {
+    font-weight: 700;
+  }
+  .book-description em {
+    font-style: italic;
+  }
+  .book-description blockquote {
+    margin: 1.5rem 0;
+    padding: 0 0 0 1rem;
+    border-left: 4px solid #ddd;
+    color: #555;
+  }
+  .book-description blockquote p {
+    margin: 0 0 0.5rem;
+  }
+  .book-description blockquote p:last-child {
+    margin-bottom: 0;
+  }
+  .book-description hr {
+    margin: 1.5rem 0;
+    border: none;
+    border-top: 1px solid #e5e5e5;
+  }
+  @media (max-width: 480px) {
+    .book-header {
+      flex-direction: column;
+    }
+    .book-cover {
+      width: 100%;
+      max-width: 240px;
+    }
+  }
+</style>

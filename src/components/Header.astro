@@ -1,0 +1,95 @@
+---
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import { t, LOCALES, type Locale } from '../i18n';
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const homeUrl = getRelativeLocaleUrl(locale, '');
+const booksUrl = getRelativeLocaleUrl(locale, 'livres');
+const blogUrl = getRelativeLocaleUrl(locale, 'blog');
+const localeLabels: Record<Locale, string> = { fr: 'FR', en: 'EN', es: 'ES' };
+---
+<header class="header">
+  <a href={homeUrl} class="logo-link" aria-label={t(locale, 'nav.home')}>
+    <span class="logo-wrap">
+      <img src={`${base}top.jpg`} alt="Logo" class="logo" width="96" height="96" />
+    </span>
+    <span class="site-title">René La Martre</span>
+  </a>
+  <nav class="nav">
+    <a href={homeUrl}>{t(locale, 'nav.home')}</a>
+    <a href={booksUrl}>{t(locale, 'nav.books')}</a>
+    <a href={blogUrl}>{t(locale, 'nav.blog')}</a>
+    <span class="locale-switcher">
+      {LOCALES.map((loc) => (
+        <a href={getRelativeLocaleUrl(loc, '')} class={loc === locale ? 'active' : ''} aria-current={loc === locale ? 'true' : undefined}>{localeLabels[loc]}</a>
+      ))}
+    </span>
+  </nav>
+</header>
+
+<style>
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--color-border, #e5e5e5);
+    background: var(--color-bg, #fff);
+  }
+  .logo-link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+    color: var(--color-text, #1a1a1a);
+  }
+  .logo-link:hover {
+    color: var(--color-text, #1a1a1a);
+  }
+  .site-title {
+    font-weight: 700;
+    font-size: 1.25rem;
+    letter-spacing: 0.02em;
+  }
+  .logo-wrap {
+    display: block;
+    width: 64px;
+    height: 64px;
+    overflow: hidden;
+    border-radius: 2px;
+  }
+  .logo {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 10%;
+    transform: scale(1.4);
+  }
+  .nav {
+    display: flex;
+    gap: 1.5rem;
+  }
+  .nav a {
+    color: var(--color-text, #1a1a1a);
+    text-decoration: none;
+    font-weight: 500;
+  }
+  .nav a:hover {
+    text-decoration: underline;
+  }
+  .locale-switcher {
+    display: flex;
+    gap: 0.5rem;
+    margin-left: 0.5rem;
+    padding-left: 1rem;
+    border-left: 1px solid var(--color-border, #e5e5e5);
+  }
+  .locale-switcher a.active {
+    font-weight: 700;
+  }
+</style>
