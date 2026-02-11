@@ -1,114 +1,141 @@
 ---
-import LayoutWelcome from '../layouts/LayoutWelcome.astro';
-import { t, LOCALES, type Locale } from '../i18n';
+// Page d'accueil en anglais à la racine (/) pour GitHub Pages — pas de redirection, contenu réel.
+import Layout from '../layouts/Layout.astro';
+import BookCard from '../components/BookCard.astro';
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import { getBooks } from '../data/books';
+import { t } from '../i18n';
 
+const locale = 'en';
 const base = import.meta.env.BASE_URL;
-const title = 'René La Martre';
-const description = 'Site d\'auteur et d\'auto-édition. Découvrez mes livres et le blog.';
+const books = getBooks(locale);
+const featuredBook = books[0];
+const imageUrl = featuredBook.image.startsWith('/') ? `${base}${featuredBook.image.slice(1)}` : `${base}${featuredBook.image}`;
+const logoUrl = `${base}logo.jpg`;
+const siteTitle = t(locale, 'home.siteTitle');
+const bookUrl = featuredBook ? getRelativeLocaleUrl(locale, `livres/${featuredBook.slug}`) : '';
+const booksIndexUrl = getRelativeLocaleUrl(locale, 'livres');
+const blogUrl = getRelativeLocaleUrl(locale, 'blog');
 ---
-<LayoutWelcome title={title} description={description}>
-  <div class="welcome">
-    <img src={`${base}logo.jpg`} alt="" class="welcome-logo" width="200" height="200" />
-    <h1 class="welcome-title">{title}</h1>
-    <p class="welcome-subtitle">{t('fr', 'welcome.subtitle')}</p>
-
-    <div class="welcome-descriptions">
-      {LOCALES.map((locale: Locale) => (
-        <div class="welcome-card" key={locale}>
-          <p class="welcome-desc">{t(locale, 'welcome.description')}</p>
-          <a href={`${base}${locale}/`} class="welcome-btn">{t(locale, 'welcome.enter')}</a>
+<Layout title={siteTitle} description={t(locale, 'home.siteDescription')} locale={locale}>
+  <section class="hero">
+    <h1 class="hero-title">{siteTitle}</h1>
+    <img src={logoUrl} alt="Logo" class="hero-logo" width="400" height="400" />
+    <p class="hero-tagline">{t(locale, 'home.tagline')}</p>
+  </section>
+  {featuredBook && (
+    <section class="featured">
+      <h2>{t(locale, 'home.featured')}</h2>
+      <article class="featured-book">
+        <a href={bookUrl}>
+          <img src={imageUrl} alt={featuredBook.title} width="200" height="300" class="featured-image" />
+        </a>
+        <div class="featured-body">
+          <h3><a href={bookUrl}>{featuredBook.title}</a></h3>
+          <p>{featuredBook.shortDescription}</p>
+          <a href={bookUrl} class="button">{t(locale, 'home.discoverBook')}</a>
         </div>
-      ))}
-    </div>
-
-    <p class="welcome-choose">{t('fr', 'welcome.chooseLanguage')} / {t('en', 'welcome.chooseLanguage')} / {t('es', 'welcome.chooseLanguage')}</p>
-    <div class="welcome-langs">
-      {LOCALES.map((locale: Locale) => (
-        <a href={`${base}${locale}/`} class="welcome-lang" key={locale}>{t(locale, 'welcome.languageName')}</a>
-      ))}
-    </div>
-  </div>
-</LayoutWelcome>
+      </article>
+    </section>
+  )}
+  <nav class="home-links">
+    <a href={booksIndexUrl}>{t(locale, 'home.viewAllBooks')}</a>
+    <a href={blogUrl}>{t(locale, 'home.viewBlog')}</a>
+  </nav>
+</Layout>
 
 <style>
-  .welcome {
+  .hero {
     text-align: center;
-    width: 100%;
+    padding: 3rem 1.5rem;
+    margin: -2rem -1.5rem 2rem;
   }
-  .welcome-logo {
-    display: block;
-    margin: 0 auto 1rem;
-    max-width: 160px;
-    width: 100%;
-    height: auto;
-    object-fit: contain;
-    border-radius: 8px;
-  }
-  .welcome-title {
-    margin: 0 0 0.25rem;
+  .hero-title {
+    margin: 0 0 1rem;
     font-size: 1.75rem;
     font-weight: 700;
     letter-spacing: 0.02em;
   }
-  .welcome-subtitle {
-    margin: 0 0 2rem;
-    font-size: 1rem;
+  .hero-logo {
+    display: block;
+    margin: 0 auto;
+    max-width: 320px;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+  .hero-tagline {
+    margin: 1rem 0 0;
+    font-size: 1.125rem;
     color: var(--color-text-muted);
   }
-  .welcome-descriptions {
-    display: grid;
-    gap: 1rem;
-    margin-bottom: 2rem;
-    text-align: left;
+  .featured {
+    margin: 2rem 0;
   }
-  .welcome-card {
-    padding: 1.25rem;
+  .featured h2 {
+    font-size: 1.125rem;
+    margin-bottom: 1rem;
+    color: var(--color-text-muted);
+  }
+  .featured-book {
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+    padding: 1.5rem;
     border: 1px solid var(--color-border);
     border-radius: 8px;
     background: var(--color-bg-muted);
   }
-  .welcome-desc {
-    margin: 0 0 1rem;
-    font-size: 0.9375rem;
-    color: var(--color-text-muted);
+  .featured-book a {
+    color: inherit;
+    text-decoration: none;
   }
-  .welcome-btn {
+  .featured-book a:hover {
+    text-decoration: underline;
+  }
+  .featured-image {
+    width: 160px;
+    height: auto;
+    object-fit: cover;
+    border-radius: 4px;
+  }
+  .featured-body h3 {
+    margin: 0 0 0.5rem;
+    font-size: 1.25rem;
+  }
+  .featured-body p {
+    margin: 0 0 1rem;
+    color: var(--color-text-muted);
+    font-size: 0.9375rem;
+  }
+  .button {
     display: inline-block;
     padding: 0.5rem 1rem;
     background: var(--color-accent);
     color: var(--color-accent-text) !important;
     border-radius: 6px;
     font-weight: 500;
-    text-decoration: none;
   }
-  .welcome-btn:hover {
+  .button:hover {
     background: var(--color-accent-hover);
+    text-decoration: none !important;
   }
-  .welcome-choose {
-    margin: 0 0 0.75rem;
-    font-size: 0.875rem;
-    color: var(--color-text-muted);
-  }
-  .welcome-langs {
+  .home-links {
     display: flex;
-    gap: 1rem;
-    justify-content: center;
-    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-top: 2rem;
   }
-  .welcome-lang {
-    padding: 0.6rem 1.25rem;
-    background: var(--color-accent);
-    color: var(--color-accent-text) !important;
-    border-radius: 6px;
+  .home-links a {
+    color: var(--color-text);
     font-weight: 500;
-    text-decoration: none;
   }
-  .welcome-lang:hover {
-    background: var(--color-accent-hover);
-  }
-  @media (min-width: 480px) {
-    .welcome-descriptions {
-      grid-template-columns: repeat(3, 1fr);
+  @media (max-width: 480px) {
+    .featured-book {
+      flex-direction: column;
+    }
+    .featured-image {
+      width: 100%;
+      max-width: 200px;
     }
   }
 </style>

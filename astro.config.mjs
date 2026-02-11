@@ -6,10 +6,11 @@ export default defineConfig({
   site: 'https://baptisteboussemart.github.io',
   output: 'static',
   i18n: {
-    locales: ['fr', 'en', 'es'],
-    defaultLocale: 'fr',
+    locales: ['en', 'fr', 'es'],
+    defaultLocale: 'en',
     routing: {
       prefixDefaultLocale: true,
+      redirectToDefaultLocale: false, // / sert index.astro (home EN), pas de redirection vers /en/
     },
   },
 });
