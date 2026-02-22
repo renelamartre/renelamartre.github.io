@@ -1,11 +1,19 @@
 import type { Locale } from '../i18n';
 
+export interface BuyOption {
+  label: Record<Locale, string>;
+  url: string;
+}
+
 export interface BookData {
   slug: string;
   title: Record<Locale, string>;
   image: string;
   shortDescription: Record<Locale, string>;
   description: Record<Locale, string>;
+  /** @deprecated Use buyOptions instead */
+  buyUrl?: string;
+  buyOptions?: BuyOption[];
 }
 
 export interface Book {
@@ -14,9 +22,60 @@ export interface Book {
   image: string;
   shortDescription: string;
   description: string;
+  buyOptions: { label: string; url: string }[];
 }
 
 const booksData: BookData[] = [
+  {
+    slug: 'carillon',
+    title: {
+      fr: 'Carillon',
+      en: 'Carillon',
+      es: 'Carillon',
+    },
+    image: '/carillon-cover.jpg',
+    buyOptions: [
+      {
+        label: {
+          fr: 'Version française (non illustrée)',
+          en: 'French version (not illustrated)',
+          es: 'Versión francesa (no ilustrada)',
+        },
+        url: 'https://payhip.com/b/1mCEd',
+      },
+    ],
+    shortDescription: {
+      fr:
+        'Un château qui est un arbre. Un roi qui parle aux plantes. Deux enfants nés le même jour : un prince sous les projecteurs, une fille des racines que personne ne nomme.',
+      en:
+        'A castle that is a tree. A king who speaks to plants. Two children born the same day: a prince in the spotlight, a girl of the roots whom no one names.',
+      es:
+        'Un castillo que es un árbol. Un rey que habla con las plantas. Dos niños nacidos el mismo día: un príncipe en el escenario, una hija de las raíces a la que nadie nombra.',
+    },
+    description: {
+      fr: `Un château qui est un arbre. Un roi qui parle aux plantes. Deux enfants nés le même jour : un prince sous les projecteurs, une fille des racines que personne ne nomme.
+
+Ils se retrouvent par hasard dans les galeries basses. Ils inventent une chanson à deux voix. Elle ouvre une fleur d'un simple chant — sans formule, sans rituel. La cour les sépare. Le palais grandit, les étages se multiplient, les carillons remplacent les paroles : chaque son a un code, plus de place pour la mélodie qu'ils avaient partagée.
+
+Lui part chercher une épouse et ne trouve que le même rêve — une chanson sans visage qui le hante. Elle reste en bas, et chante pour le bois vivant en secret, malgré l'interdit. Jusqu'au jour où le château s'éveille, et où les voix remontent.
+
+*Carillon* est l'histoire d'une fraternité volée, d'un pouvoir qui se transmet autrement que par le sang, et d'un palais qui choisit de ne plus rester seul. Un conte où la forêt a une mémoire, où les racines portent les chansons — et où la vérité finit par remonter.`,
+      en: `A castle that is a tree. A king who speaks to plants. Two children born the same day: a prince in the spotlight, a girl of the roots whom no one names.
+
+They meet by chance in the lower galleries. They invent a song in two voices. She opens a flower with a simple chant — no formula, no ritual. The court separates them. The palace grows, the floors multiply, carillons replace words: each sound has a code, no more room for the melody they had shared.
+
+He leaves to find a bride and finds only the same dream — a faceless song that haunts him. She stays below, and sings for the living wood in secret, despite the ban. Until the day the castle awakens, and the voices rise again.
+
+*Carillon* is the story of a stolen brotherhood, of a power that is passed on otherwise than by blood, and of a palace that chooses no longer to stay alone. A tale where the forest has a memory, where roots carry the songs — and where the truth finally rises.`,
+      es: `Un castillo que es un árbol. Un rey que habla con las plantas. Dos niños nacidos el mismo día: un príncipe en el escenario, una hija de las raíces a la que nadie nombra.
+
+Se encuentran por casualidad en las galerías bajas. Inventan una canción a dos voces. Ella abre una flor con un simple canto — sin fórmula, sin rito. La corte los separa. El palacio crece, los pisos se multiplican, los carillones reemplazan las palabras: cada sonido tiene un código, ya no hay lugar para la melodía que habían compartido.
+
+Él parte en busca de una esposa y no encuentra más que el mismo sueño — una canción sin rostro que le persigue. Ella se queda abajo, y canta para la madera viva en secreto, pese a la prohibición. Hasta el día en que el castillo despierta, y las voces remontan.
+
+*Carillon* es la historia de una fraternidad robada, de un poder que se transmite de otro modo que por la sangre, y de un palacio que elige no quedarse solo. Un cuento donde el bosque tiene memoria, donde las raíces llevan las canciones — y donde la verdad termina por remontar.`,
+    },
+  },
   {
     slug: 'algorithmes-du-chaos',
     title: {
@@ -164,6 +223,22 @@ Nunca volverás a mirar tu feed de noticias de la misma forma.
   },
 ];
 
+function getBuyOptions(
+  book: BookData,
+  locale: Locale
+): { label: string; url: string }[] {
+  if (book.buyOptions?.length) {
+    return book.buyOptions.map((opt) => ({
+      label: opt.label[locale],
+      url: opt.url,
+    }));
+  }
+  if (book.buyUrl) {
+    return [{ label: '', url: book.buyUrl }];
+  }
+  return [];
+}
+
 export function getBooks(locale: Locale): Book[] {
   return booksData.map((b) => ({
     slug: b.slug,
@@ -171,5 +246,6 @@ export function getBooks(locale: Locale): Book[] {
     image: b.image,
     shortDescription: b.shortDescription[locale],
     description: b.description[locale],
+    buyOptions: getBuyOptions(b, locale),
   }));
 }

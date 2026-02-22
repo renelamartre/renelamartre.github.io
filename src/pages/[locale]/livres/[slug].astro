@@ -35,7 +35,19 @@ const descriptionHtml = await marked.parse(book.description);
         <h1>{book.title}</h1>
         <p class="tagline">{t(locale, 'books.tagline')}</p>
         <div class="availability">
-          <p>{t(locale, 'books.availability')}</p>
+          {book.buyOptions.length > 0 ? (
+            <ul class="buy-options">
+              {book.buyOptions.map((opt) => (
+                <li>
+                  <a href={opt.url} target="_blank" rel="noopener noreferrer" class="buy-link">
+                    {opt.label || t(locale, 'books.buyOnPayhip')}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p>{t(locale, 'books.availability')}</p>
+          )}
         </div>
       </div>
     </div>
@@ -78,6 +90,29 @@ const descriptionHtml = await marked.parse(book.description);
   }
   .availability p {
     margin: 0;
+  }
+  .availability .buy-options {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .availability .buy-options li {
+    margin: 0;
+  }
+  .availability .buy-link {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: var(--color-accent);
+    color: var(--color-accent-text) !important;
+    border-radius: 6px;
+    font-weight: 500;
+    text-decoration: none;
+  }
+  .availability .buy-link:hover {
+    background: var(--color-accent-hover);
   }
   .book-description {
     line-height: 1.7;
