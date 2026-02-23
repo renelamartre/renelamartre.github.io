@@ -1,10 +1,12 @@
 ---
-title: Bienvenido al blog
-description: Primer artículo para descubrir el blog.
-pubDate: 2025-02-10
+title: Lanzamiento de Carillon y Los Algoritmos del Caos
+description: Los dos libros están disponibles en francés; la versión en español está en curso de traducción.
+pubDate: 2025-02-23
 draft: false
 ---
 
-Bienvenido a este blog. Encontrarás entradas sobre escritura y autoedición.
+*Carillon* y *Los Algoritmos del Caos* están disponibles en francés.
 
-*Los Algoritmos del Caos* estará disponible pronto. Mientras tanto, no dudes en explorar el sitio.
+Puedes descubrirlos en la página [Libros](/es/livres). La versión en español está en curso de traducción y se publicará próximamente.
+
+Suscribirse al boletín permite recibir noticias por correo y contenido exclusivo.
