@@ -14,6 +14,8 @@ export interface BookData {
   /** @deprecated Use buyOptions instead */
   buyUrl?: string;
   buyOptions?: BuyOption[];
+  /** If true, shown in the "Featured" section on the home page */
+  featured?: boolean;
 }
 
 export interface Book {
@@ -28,6 +30,7 @@ export interface Book {
 const booksData: BookData[] = [
   {
     slug: 'carillon',
+    featured: true,
     title: {
       fr: 'Carillon',
       en: 'Carillon',
@@ -78,12 +81,23 @@ Se encuentran por casualidad en las galerías bajas. Inventan una canción a dos
   },
   {
     slug: 'algorithmes-du-chaos',
+    featured: true,
     title: {
       fr: 'Les Algorithmes du Chaos',
       en: 'The Algorithms of Chaos',
       es: 'Los Algoritmos del Caos',
     },
     image: '/algorithmes-du-chaos.jpg',
+    buyOptions: [
+      {
+        label: {
+          fr: 'Version française',
+          en: 'French version',
+          es: 'Versión francesa',
+        },
+        url: 'https://payhip.com/b/NJqRi',
+      },
+    ],
     shortDescription: {
       fr:
         'Un thriller dystopique choral, où la technologie ne nous surveille plus : elle nous réécrit. Jusqu\'à ce qu\'elle décide de tout effacer.',
@@ -248,4 +262,8 @@ export function getBooks(locale: Locale): Book[] {
     description: b.description[locale],
     buyOptions: getBuyOptions(b, locale),
   }));
+}
+
+export function getFeaturedBooks(locale: Locale): Book[] {
+  return getBooks(locale).filter((_, i) => booksData[i].featured);
 }

@@ -2,7 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import BookCard from '../../components/BookCard.astro';
 import { getRelativeLocaleUrl } from 'astro:i18n';
-import { getBooks } from '../../data/books';
+import { getFeaturedBooks } from '../../data/books';
 import { t, LOCALES, type Locale } from '../../i18n';
 
 export async function getStaticPaths() {
@@ -11,12 +11,9 @@ export async function getStaticPaths() {
 
 const { locale } = Astro.params as { locale: Locale };
 const base = import.meta.env.BASE_URL;
-const books = getBooks(locale);
-const featuredBook = books[0];
-const imageUrl = featuredBook.image.startsWith('/') ? `${base}${featuredBook.image.slice(1)}` : `${base}${featuredBook.image}`;
+const featuredBooks = getFeaturedBooks(locale);
 const logoUrl = `${base}logo.jpg`;
 const siteTitle = t(locale, 'home.siteTitle');
-const bookUrl = featuredBook ? getRelativeLocaleUrl(locale, `livres/${featuredBook.slug}`) : '';
 const booksIndexUrl = getRelativeLocaleUrl(locale, 'livres');
 const blogUrl = getRelativeLocaleUrl(locale, 'blog');
 ---
@@ -26,19 +23,27 @@ const blogUrl = getRelativeLocaleUrl(locale, 'blog');
     <img src={logoUrl} alt="Logo" class="hero-logo" width="400" height="400" />
     <p class="hero-tagline">{t(locale, 'home.tagline')}</p>
   </section>
-  {featuredBook && (
+  {featuredBooks.length > 0 && (
     <section class="featured">
       <h2>{t(locale, 'home.featured')}</h2>
-      <article class="featured-book">
-        <a href={bookUrl}>
-          <img src={imageUrl} alt={featuredBook.title} width="200" height="300" class="featured-image" />
-        </a>
-        <div class="featured-body">
-          <h3><a href={bookUrl}>{featuredBook.title}</a></h3>
-          <p>{featuredBook.shortDescription}</p>
-          <a href={bookUrl} class="button">{t(locale, 'home.discoverBook')}</a>
-        </div>
-      </article>
+      <div class="featured-list">
+        {featuredBooks.map((book) => {
+          const imageUrl = book.image.startsWith('/') ? `${base}${book.image.slice(1)}` : `${base}${book.image}`;
+          const bookUrl = getRelativeLocaleUrl(locale, `livres/${book.slug}`);
+          return (
+            <article class="featured-book">
+              <a href={bookUrl}>
+                <img src={imageUrl} alt={book.title} width="200" height="300" class="featured-image" />
+              </a>
+              <div class="featured-body">
+                <h3><a href={bookUrl}>{book.title}</a></h3>
+                <p>{book.shortDescription}</p>
+                <a href={bookUrl} class="button">{t(locale, 'home.discoverBook')}</a>
+              </div>
+            </article>
+          );
+        })}
+      </div>
     </section>
   )}
   <nav class="home-links">
@@ -79,6 +84,11 @@ const blogUrl = getRelativeLocaleUrl(locale, 'blog');
     font-size: 1.125rem;
     margin-bottom: 1rem;
     color: var(--color-text-muted);
+  }
+  .featured-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
   }
   .featured-book {
     display: flex;
