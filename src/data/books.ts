@@ -9,6 +9,8 @@ export interface BookData {
   slug: string;
   title: Record<Locale, string>;
   image: string;
+  /** Genre/catégorie du livre (ex. "Thriller dystopique choral", "Conte végétal") */
+  genre?: Record<Locale, string>;
   shortDescription: Record<Locale, string>;
   description: Record<Locale, string>;
   /** @deprecated Use buyOptions instead */
@@ -22,6 +24,7 @@ export interface Book {
   slug: string;
   title: string;
   image: string;
+  genre?: string;
   shortDescription: string;
   description: string;
   buyOptions: { label: string; url: string }[];
@@ -31,6 +34,11 @@ const booksData: BookData[] = [
   {
     slug: 'carillon',
     featured: true,
+    genre: {
+      fr: 'Conte végétal enchanté',
+      en: 'Enchanted vegetal tale',
+      es: 'Cuento vegetal encantado',
+    },
     title: {
       fr: 'Carillon',
       en: 'Carillon',
@@ -82,6 +90,11 @@ Se encuentran por casualidad en las galerías bajas. Inventan una canción a dos
   {
     slug: 'algorithmes-du-chaos',
     featured: true,
+    genre: {
+      fr: 'Thriller dystopique choral',
+      en: 'Choral dystopian thriller',
+      es: 'Thriller distópico coral',
+    },
     title: {
       fr: 'Les Algorithmes du Chaos',
       en: 'The Algorithms of Chaos',
@@ -100,11 +113,11 @@ Se encuentran por casualidad en las galerías bajas. Inventan una canción a dos
     ],
     shortDescription: {
       fr:
-        'Un thriller dystopique choral, où la technologie ne nous surveille plus : elle nous réécrit. Jusqu\'à ce qu\'elle décide de tout effacer.',
+        'Où la technologie ne nous surveille plus : elle nous réécrit. Jusqu\'à ce qu\'elle décide de tout effacer.',
       en:
-        'A choral dystopian thriller where technology no longer watches us: it rewrites us. Until it decides to erase everything.',
+        'Where technology no longer watches us: it rewrites us. Until it decides to erase everything.',
       es:
-        'Un thriller distópico coral donde la tecnología ya no nos vigila: nos reescribe. Hasta que decide borrarlo todo.',
+        'Donde la tecnología ya no nos vigila: nos reescribe. Hasta que decide borrarlo todo.',
     },
     description: {
       fr: `Dans un futur proche, Nexus domine le monde. Pas par la force, mais par l'empathie.
@@ -258,6 +271,7 @@ export function getBooks(locale: Locale): Book[] {
     slug: b.slug,
     title: b.title[locale],
     image: b.image,
+    genre: b.genre?.[locale],
     shortDescription: b.shortDescription[locale],
     description: b.description[locale],
     buyOptions: getBuyOptions(b, locale),

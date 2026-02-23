@@ -16,6 +16,7 @@ const bookUrl = getRelativeLocaleUrl(locale, `livres/${book.slug}`);
   <a href={bookUrl} class="card-link">
     <img src={imageUrl} alt={book.title} class="card-image" width="200" height="300" />
     <div class="card-body">
+      {book.genre && <span class="card-genre">{book.genre}</span>}
       <h2 class="card-title">{book.title}</h2>
       <p class="card-description">{book.shortDescription}</p>
       <span class="card-cta">{t(locale, 'books.learnMore')}</span>
@@ -52,6 +53,15 @@ const bookUrl = getRelativeLocaleUrl(locale, `livres/${book.slug}`);
     display: flex;
     flex-direction: column;
     justify-content: center;
+  }
+  .card-genre {
+    display: block;
+    margin-bottom: 0.35rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--color-text-muted);
   }
   .card-title {
     margin: 0 0 0.5rem;

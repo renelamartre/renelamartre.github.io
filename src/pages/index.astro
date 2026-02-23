@@ -33,6 +33,7 @@ const blogUrl = getRelativeLocaleUrl(locale, 'blog');
                 <img src={imageUrl} alt={book.title} width="200" height="300" class="featured-image" />
               </a>
               <div class="featured-body">
+                {book.genre && <span class="featured-genre">{book.genre}</span>}
                 <h3><a href={bookUrl}>{book.title}</a></h3>
                 <p>{book.shortDescription}</p>
                 <a href={bookUrl} class="button">{t(locale, 'home.discoverBook')}</a>
@@ -108,6 +109,15 @@ const blogUrl = getRelativeLocaleUrl(locale, 'blog');
     height: auto;
     object-fit: cover;
     border-radius: 4px;
+  }
+  .featured-genre {
+    display: block;
+    margin-bottom: 0.35rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--color-text-muted);
   }
   .featured-body h3 {
     margin: 0 0 0.5rem;

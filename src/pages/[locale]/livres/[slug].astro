@@ -32,8 +32,9 @@ const descriptionHtml = await marked.parse(book.description);
     <div class="book-header">
       <img src={imageUrl} alt={book.title} class="book-cover" width="280" height="420" />
       <div class="book-meta">
+        {book.genre && <p class="genre">{book.genre}</p>}
         <h1>{book.title}</h1>
-        <p class="tagline">{t(locale, 'books.tagline')}</p>
+        {!book.genre && <p class="tagline">{t(locale, 'books.tagline')}</p>}
         <div class="availability">
           {book.buyOptions.length > 0 ? (
             <ul class="buy-options">
@@ -71,6 +72,14 @@ const descriptionHtml = await marked.parse(book.description);
     object-fit: cover;
     border-radius: 4px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  .book-meta .genre {
+    margin: 0 0 0.35rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--color-text-muted);
   }
   .book-meta h1 {
     margin: 0 0 0.5rem;
