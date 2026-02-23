@@ -2,6 +2,8 @@
 import '../styles/theme.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import NewsletterForm from '../components/NewsletterForm.astro';
+import { t } from '../i18n';
 import type { Locale } from '../i18n';
 
 interface Props {
@@ -9,7 +11,14 @@ interface Props {
   description?: string;
   locale: Locale;
 }
+const KIT_UID: Record<Locale, string> = {
+  fr: '97c2ff2a89',
+  en: 'f23ce848b9',
+  es: 'b89d6ef750',
+};
+
 const { title, description = '', locale } = Astro.props;
+const kitUid = KIT_UID[locale];
 ---
 <!doctype html>
 <html lang={locale}>
@@ -21,6 +30,8 @@ const { title, description = '', locale } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
     <title>{title}</title>
+    <script src="https://f.convertkit.com/ckjs/ck.5.js"></script>
+    <script async data-uid={kitUid} src={`https://rene-la-martre.kit.com/${kitUid}/index.js`}></script>
     <script data-goatcounter="https://renelamartre.goatcounter.com/count"
             async src="//gc.zgo.at/count.js"></script>
   </head>
@@ -30,6 +41,10 @@ const { title, description = '', locale } = Astro.props;
       <main class="main">
         <slot />
       </main>
+      <section class="newsletter-inline" aria-label={t(locale, 'newsletter.title')}>
+        <h2 class="newsletter-inline-title">{t(locale, 'newsletter.title')}</h2>
+        <NewsletterForm locale={locale} />
+      </section>
       <Footer locale={locale} />
     </div>
   </body>
@@ -60,5 +75,17 @@ const { title, description = '', locale } = Astro.props;
     margin: 0 auto;
     padding: 2rem 1.5rem;
     width: 100%;
+  }
+  .newsletter-inline {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 1.5rem 2rem;
+    width: 100%;
+  }
+  .newsletter-inline-title {
+    margin: 0 0 0.75rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-text);
   }
 </style>

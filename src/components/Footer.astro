@@ -10,12 +10,19 @@ const currentYear = new Date().getFullYear();
 const homeUrl = getRelativeLocaleUrl(locale, '');
 const booksUrl = getRelativeLocaleUrl(locale, 'livres');
 const blogUrl = getRelativeLocaleUrl(locale, 'blog');
+const SIGNUP_URL: Record<Locale, string> = {
+  fr: 'https://rene-la-martre.kit.com/97c2ff2a89',
+  en: 'https://rene-la-martre.kit.com/f23ce848b9',
+  es: 'https://rene-la-martre.kit.com/b89d6ef750',
+};
+const signupUrl = SIGNUP_URL[locale];
 ---
 <footer class="footer">
   <nav class="footer-nav">
     <a href={homeUrl}>{t(locale, 'nav.home')}</a>
     <a href={booksUrl}>{t(locale, 'nav.books')}</a>
     <a href={blogUrl}>{t(locale, 'nav.blog')}</a>
+    <a href={signupUrl} target="_blank" rel="noopener noreferrer">{t(locale, 'newsletter.signup')}</a>
   </nav>
   <p class="copyright">&copy; {currentYear}</p>
 </footer>
