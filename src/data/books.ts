@@ -70,7 +70,9 @@ Ils se retrouvent par hasard dans les galeries basses. Ils inventent une chanson
 
 Lui part chercher une épouse et ne trouve que le même rêve — une chanson sans visage qui le hante. Elle reste en bas, et chante pour le bois vivant en secret, malgré l'interdit. Jusqu'au jour où le château s'éveille, et où les voix remontent.
 
-*Carillon* est l'histoire d'une fraternité volée, d'un pouvoir qui se transmet autrement que par le sang, et d'un palais qui choisit de ne plus rester seul. Un conte où la forêt a une mémoire, où les racines portent les chansons — et où la vérité finit par remonter.`,
+*Carillon* est l'histoire d'une fraternité volée, d'un pouvoir qui se transmet autrement que par le sang, et d'un palais qui choisit de ne plus rester seul. Un conte où la forêt a une mémoire, où les racines portent les chansons — et où la vérité finit par remonter.
+
+**Œuvre déposée auprès de l'INPI**`,
       en: `A castle that is a tree. A king who speaks to plants. Two children born the same day: a prince in the spotlight, a girl of the roots whom no one names.
 
 They meet by chance in the lower galleries. They invent a song in two voices. She opens a flower with a simple chant — no formula, no ritual. The court separates them. The palace grows, the floors multiply, carillons replace words: each sound has a code, no more room for the melody they had shared.
@@ -78,7 +80,9 @@ They meet by chance in the lower galleries. They invent a song in two voices. Sh
 He leaves to find a bride and finds only the same dream — a faceless song that haunts him. She stays below, and sings for the living wood in secret, despite the ban. Until the day the castle awakens, and the voices rise again.
 
 *Carillon* is the story of a stolen brotherhood, of a power that is passed on otherwise than by blood, and of a palace that chooses no longer to stay alone. A tale where the forest has a memory, where roots carry the songs — and where the truth finally rises.`,
-      es: `Un castillo que es un árbol. Un rey que habla con las plantas. Dos niños nacidos el mismo día: un príncipe en el escenario, una hija de las raíces a la que nadie nombra.
+      es: `**[Obra en curso de traducción al español por Ana Medina, Qori.fr](https://qori.fr/)**
+
+Un castillo que es un árbol. Un rey que habla con las plantas. Dos niños nacidos el mismo día: un príncipe en el escenario, una hija de las raíces a la que nadie nombra.
 
 Se encuentran por casualidad en las galerías bajas. Inventan una canción a dos voces. Ella abre una flor con un simple canto, sin fórmula, sin ritual. La corte los separa. El palacio crece, los pisos se multiplican, los carillones reemplazan a las palabras: cada sonido tiene un código, ya no hay lugar para la melodía que compartían.
 
@@ -162,7 +166,9 @@ Vous ne regarderez plus jamais votre fil d'actualité de la même façon.
 
 > Barjavel décrivait déjà la chute de la société dans
 > **Ravage**, 1943 –
-> Rien n'a tout à fait changé.`,
+> Rien n'a tout à fait changé.
+
+**Œuvre déposée auprès de l'INPI**`,
       en: `In a near future, Nexus dominates the world. Not by force, but by empathy.
 Its AI, Empath, no longer censors: it feels. It understands. It rewrites.
 A joke among friends becomes aggression. Criticism becomes trauma. Truth becomes unbearable.
@@ -205,7 +211,8 @@ You'll never look at your news feed the same way again.
 > Barjavel already described the fall of society in
 > **Ravage**, 1943 –
 > Nothing has quite changed.`,
-      es: `En un futuro próximo, Nexus domina el mundo.
+      es: `**[Obra en curso de traducción al español por Ana Medina, Qori.fr](https://qori.fr/)**
+En un futuro próximo, Nexus domina el mundo.
 No por la fuerza, sino por la empatía.
 Su IA, Empath, ya no censura: siente. Entiende. Reescribe.
 Una broma entre amigos se convierte en agresión.
