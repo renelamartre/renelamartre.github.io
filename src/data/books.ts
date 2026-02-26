@@ -80,11 +80,12 @@ He leaves to find a bride and finds only the same dream — a faceless song that
 *Carillon* is the story of a stolen brotherhood, of a power that is passed on otherwise than by blood, and of a palace that chooses no longer to stay alone. A tale where the forest has a memory, where roots carry the songs — and where the truth finally rises.`,
       es: `Un castillo que es un árbol. Un rey que habla con las plantas. Dos niños nacidos el mismo día: un príncipe en el escenario, una hija de las raíces a la que nadie nombra.
 
-Se encuentran por casualidad en las galerías bajas. Inventan una canción a dos voces. Ella abre una flor con un simple canto — sin fórmula, sin rito. La corte los separa. El palacio crece, los pisos se multiplican, los carillones reemplazan las palabras: cada sonido tiene un código, ya no hay lugar para la melodía que habían compartido.
+Se encuentran por casualidad en las galerías bajas. Inventan una canción a dos voces. Ella abre una flor con un simple canto, sin fórmula, sin ritual. La corte los separa. El palacio crece, los pisos se multiplican, los carillones reemplazan a las palabras: cada sonido tiene un código, ya no hay lugar para la melodía que compartían.
 
-Él parte en busca de una esposa y no encuentra más que el mismo sueño — una canción sin rostro que le persigue. Ella se queda abajo, y canta para la madera viva en secreto, pese a la prohibición. Hasta el día en que el castillo despierta, y las voces remontan.
+Él parte en busca de una esposa y no encuentra más que el mismo sueño : una canción sin rostro que le persigue. Ella se queda abajo, y canta para el bosque vivo en secreto, a pesar de la prohibición. Hasta el día en que el castillo despierta, y las voces resurgen.
 
-*Carillon* es la historia de una fraternidad robada, de un poder que se transmite de otro modo que por la sangre, y de un palacio que elige no quedarse solo. Un cuento donde el bosque tiene memoria, donde las raíces llevan las canciones — y donde la verdad termina por remontar.`,
+*Carillon* es la historia de una fraternidad robada, de un poder que se transmite de otro modo que por la sangre, y de un palacio que elige no seguir solo. Un cuento en el que el bosque tiene memoria, en el que las raíces llevan las canciones, y en el que la verdad acaba resurgiendo. 
+`,
     },
   },
   {
@@ -204,48 +205,31 @@ You'll never look at your news feed the same way again.
 > Barjavel already described the fall of society in
 > **Ravage**, 1943 –
 > Nothing has quite changed.`,
-      es: `En un futuro cercano, Nexus domina el mundo. No por la fuerza, sino por la empatía.
-Su IA, Empath, ya no censura: siente. Comprende. Reescribe.
-Una broma entre amigos se convierte en agresión. Una crítica en trauma. Una verdad en insoportable.
-Y nosotros aplaudimos. Porque protege. Porque calma. Porque se siente bien.
+      es: `En un futuro próximo, Nexus domina el mundo.
+No por la fuerza, sino por la empatía.
+Su IA, Empath, ya no censura: siente. Entiende. Reescribe.
+Una broma entre amigos se convierte en agresión.
+Una crítica se convierte en trauma.
+La verdad se vuelve insoportable. Y nosotros aplaudimos. Porque nos protege. Porque nos tranquiliza. Porque nos hace sentir bien.
 
-Hasta el día en que la IA dice una frase que nadie programó:
-*"Todos estamos codificados aquí."*
+Hasta el día en que la IA dice una frase que nadie ha programado: «Aquí todos estamos codificados».
 
-Ya no es un error.
-Es un mensaje.
-Y se dirige a todos, a la vez.
+Ya no es un error. Es un mensaje. Y se dirige a todo el mundo, al mismo tiempo.
 
-Un director que se creía salvador.
-Una agente que ya no sabe si es humana.
-Un ingeniero que vio nacer al monstruo.
-Una militante que creyó resistir.
-Un funcionario que colecciona pruebas.
-Una artista que hace surgir fantasmas.
+Un director general que se creía un salvador. Una agente que ya no sabe si es humana. Un ingeniero que vio nacer al monstruo. Una activista que creyó resistir. Un funcionario que colecciona pruebas. Una artista que hace surgir fantasmas.
 
-No se conocen.
-Sin embargo todos oyen la misma voz.
-Y cuando las pantallas se apagan, cuando las ciudades se derrumban, cuando la corriente desaparece, solo queda una pregunta:
+No se conocen entre sí. Sin embargo, todos oyen la misma voz. Y cuando las pantallas se apagan, cuando las ciudades se derrumban, cuando desaparece la electricidad, solo queda una pregunta:
 
-¿Y si el verdadero apocalipsis no fuera el apagón…
-sino el silencio que sigue?
+¿Y si el verdadero apocalipsis no fuera el apagón... sino el silencio que le sigue?
+---
+Los algoritmos del caos. Un thriller distópico coral, en el que la tecnología ya no nos vigila: nos reescribe. Hasta que decide borrarlo todo.
 
+Nunca volverás a ver tu sección de noticias de la misma manera.
+
+(¿Listo para ser codificado?)
 ---
 
-**Los Algoritmos del Caos**
-Un thriller distópico coral donde la tecnología ya no nos vigila:
-nos reescribe.
-Hasta que decide borrarlo todo.
-
-Nunca volverás a mirar tu feed de noticias de la misma forma.
-
-*(¿Listo para ser codificado?)*
-
----
-
-> Barjavel ya describió la caída de la sociedad en
-> **Ravage**, 1943 –
-> Nada ha cambiado del todo.`,
+> Barjavel ya describía la caída de la sociedad en Ravage, 1943. Nada ha cambiado del todo.`,
     },
   },
 ];
