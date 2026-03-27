@@ -54,6 +54,14 @@ const booksData: BookData[] = [
         },
         url: 'https://payhip.com/b/1mCEd',
       },
+      {
+        label: {
+          fr: 'Version française (Amazon Kindle)',
+          en: 'French version (Amazon Kindle)',
+          es: 'Versión francesa (Amazon Kindle)',
+        },
+        url: 'https://www.amazon.fr/dp/B0GV3M1VWR',
+      },
     ],
     shortDescription: {
       fr:
@@ -114,6 +122,14 @@ Se encuentran por casualidad en las galerías bajas. Inventan una canción a dos
           es: 'Versión francesa',
         },
         url: 'https://payhip.com/b/NJqRi',
+      },
+      {
+        label: {
+          fr: 'Version française (Amazon Kindle)',
+          en: 'French version (Amazon Kindle)',
+          es: 'Versión francesa (Amazon Kindle)',
+        },
+        url: 'https://www.amazon.fr/dp/B0GV3MQ3RJ',
       },
     ],
     shortDescription: {
