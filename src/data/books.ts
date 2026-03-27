@@ -56,9 +56,9 @@ const booksData: BookData[] = [
       },
       {
         label: {
-          fr: 'Version française (Amazon Kindle)',
-          en: 'French version (Amazon Kindle)',
-          es: 'Versión francesa (Amazon Kindle)',
+          fr: 'Version française (non illustrée, Amazon Kindle)',
+          en: 'French version (not illustrated, Amazon Kindle)',
+          es: 'Versión francesa (no ilustrada, Amazon Kindle)',
         },
         url: 'https://www.amazon.fr/dp/B0GV3M1VWR',
       },
